@@ -49,9 +49,9 @@ namespace DatingApp.API.Controllers
         {
             if (id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value)) return Unauthorized();
 
-            var userFormRepo = await _repo.GetUser(id);
+            var userFromRepo = await _repo.GetUser(id);
 
-            _mapper.Map(userForUpdateDto, userFormRepo);
+            _mapper.Map(userForUpdateDto, userFromRepo);
 
             if (await _repo.SaveAll()) return NoContent();
                 
